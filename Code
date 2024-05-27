@@ -37,8 +37,8 @@ function draw() {
   text(money2, 565, 300)
   fill(255)
   textSize(15)
-  text("Extend Rectangle (E for Player 1 and Right Arrow for Player 2) $10", 25, 350)
-  text("Increase Movement Distance (Q for Player 1 and Left Arrow for Player 2) $5", 25, 375)
+  text("Extend Rectangle (E for Player 1 and Right Arrow for Player 2) $5", 25, 350)
+  text("Increase Movement Distance (Q for Player 1 and Left Arrow for Player 2) $10", 25, 375)
   if (x > 575) {
     score1 += 1
     x = 50
