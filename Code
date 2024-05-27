@@ -1,0 +1,143 @@
+let x = 200
+let y = 200
+let xspeed = 2
+let yspeed = 2
+let a = 100
+let b = 100
+score1 = 0
+score2 = 0
+c = 75
+d = 75
+e = 0
+f = 0
+money1 = 0
+money2 = 0
+
+function setup () {
+  createCanvas(600, 400)
+  background(0)
+}
+
+function draw() {
+  background(0)
+  ellipse(x, y, 25)
+  rect(30, a, 20, c)
+  rect(570, b, 20, d)
+  x += xspeed
+  y += yspeed
+  fill(255)
+  textSize(50)
+  text(score1, 200, 100)
+  text(score2, 400, 100)
+  fill(0, 255, 0)
+  textSize(20)
+  text("$", 50, 300)
+  text(money1, 65, 300)
+  text("$", 550, 300)
+  text(money2, 565, 300)
+  fill(255)
+  textSize(15)
+  text("Extend Rectangle (E for Player 1 and Right Arrow for Player 2) $10", 25, 350)
+  text("Increase Movement Distance (Q for Player 1 and Left Arrow for Player 2) $5", 25, 375)
+  if (x > 575) {
+    score1 += 1
+    x = 50
+    y = 200
+    money1 = 0
+    money2 = 0
+    c = 75
+    d = 75
+    e = 0
+    f = 0
+  }
+  if (x < 25) {
+    score2 += 1
+    x = 550
+    y = 200
+    money1 = 0
+    money2 = 0
+    c = 75
+    d = 75
+    e = 0
+    f = 0
+  }
+  if (y > 375) {
+    yspeed *= -1
+  }
+  if (y < 25) {
+    yspeed *= -1
+  }
+  if (x > 30 && x < 40 && y > a && y < a + c) {
+    xspeed *= -1
+    money1 += 1
+  }
+  if (x > 570 && x < 580 && y > b && y < b + d) {
+    xspeed *= -1
+    money2 += 1
+  }
+  if (score1 >= 5) {
+    textSize(40)
+    background(0)
+    text("Player 1 Wins!", 175, 200)
+    text("Press Space to Restart", 100, 300)
+  }
+  if (score2 >= 5) {
+    textSize(40)
+    background(0)
+    text("Player 2 Wins!", 175, 200)
+    text("Press Space to Restart", 100, 300)
+  }
+}
+
+function keyPressed() {
+  if (keyCode == 87) {
+    a -= 20
+    a -= e
+  }
+  if (keyCode == 83) {
+    a += 20
+    a += e
+  }
+  if (keyCode == 38) {
+    b -= 20
+    b -= f
+  }
+  if (keyCode == 40) {
+    b += 20
+    b += f
+  }
+  if (keyCode == 32) {
+    x = 200
+    y = 200
+    xspeed = 2
+    yspeed = 2
+    a = 100
+    b = 100
+    score1 = 0
+    score2 = 0
+  }
+  if (keyCode == 69) {
+    if (money1 >= 10) {
+      c += 25
+      money1 -= 10
+    }
+  }
+  if (keyCode == 37) {
+    if (money2 >= 10) {
+      d += 25
+      money2 -= 10
+    }
+  }
+  if (keyCode == 81) {
+    if (money1 >= 5) {
+      e += 5
+      money1 -= 5
+    }
+  }
+  if (keyCode == 39) {
+    if (money2 >= 5) {
+      f += 5
+      money2 -= 5
+    }
+  }
+}
